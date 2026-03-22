@@ -7,11 +7,15 @@
 <body>
     <div class="container">
         <h1>My Habit Tracker</h1>
+        <p id="counter">Total: 0 | Done: 0</p>
+        
         <div class="input-group">
             <input type="text" id="habitInput" placeholder="Enter a new habit...">
             <button onclick="addHabit()">Add</button>
         </div>
         <ul id="habitList"></ul>
+        
+        <button id="clearAll" onclick="clearAllHabits()" style="background-color: #dc3545; color: white; margin-top: 20px; width: 100%; border: none; padding: 10px; border-radius: 5px; cursor: pointer;">Clear All Habits</button>
     </div>
     <script src="script.js"></script>
 </body>

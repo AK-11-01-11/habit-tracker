@@ -1,48 +1,124 @@
+/* --- 1. Base Setup & Font --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #f4f7f6;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f4f7f6; /* Soft light-grey background */
+    color: #333;
     display: flex;
     justify-content: center;
-    padding-top: 50px;
+    padding-top: 50px; /* Pushes the app down from the top slightly */
+    min-height: 100vh;
 }
 
+/* --- 2. The Main App Card --- */
 .container {
     background: white;
-    padding: 2rem;
+    padding: 30px;
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    width: 350px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Adds a professional shadow */
+    width: 100%;
+    max-width: 450px;
 }
 
-h1 { color: #333; text-align: center; }
-
-.input-group { display: flex; gap: 10px; }
-
-input {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+h1 {
+    text-align: center;
+    font-size: 26px;
+    color: #2c3e50;
+    margin-bottom: 5px;
 }
 
+#counter {
+    text-align: center;
+    font-weight: bold;
+    color: #7f8c8d;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+/* --- 3. Input Area --- */
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#habitInput {
+    flex: 1; /* Makes the text box take up remaining space */
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    outline: none;
+}
+
+#habitInput:focus {
+    border-color: #3498db; /* Blue border when typing */
+}
+
+/* --- 4. Buttons --- */
 button {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 4px;
     cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    transition: 0.2s; /* Makes the hover effect smooth */
 }
 
-ul { list-style: none; padding: 0; margin-top: 20px; }
+button:hover {
+    opacity: 0.8; /* Buttons slightly fade when you hover over them */
+}
+
+/* The "Add" Button specifically */
+.input-group button {
+    background-color: #3498db; /* Blue */
+}
+
+/* The "Done" Button specifically */
+li button:first-child {
+    background-color: #4CAF50; /* Green */
+}
+
+/* --- 5. The Habit List --- */
+ul {
+    list-style-type: none; /* Removes the bullet points */
+}
 
 li {
-    background: #fff;
-    border-bottom: 1px solid #eee;
-    padding: 10px;
+    background: white;
+    border: 1px solid #eee;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Pushes text left, buttons right */
     align-items: center;
+    
+    /* THE MAGIC FADE ANIMATION */
+    transition: all 0.4s ease; 
 }
 
-.done { text-decoration: line-through; color: #888; }
+/* Keeps the Done and X buttons neatly together */
+li div {
+    display: flex;
+    gap: 5px; 
+}
+
+/* --- 6. The "Completed" States (Triggered by JavaScript) --- */
+.habit-completed {
+    background-color: #e8f5e9 !important; /* Soft green background */
+    border-color: #c8e6c9 !important; /* Soft green border */
+}
+
+.done {
+    text-decoration: line-through;
+    color: #a5d6a7;
+    font-style: italic;
+}
